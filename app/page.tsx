@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <div>
-      <div className="text-black">AI SAAS</div>
-    </div>
-  );
+  return <p className="text-6xl text-green-500">AI SAAS</p>;
 }
