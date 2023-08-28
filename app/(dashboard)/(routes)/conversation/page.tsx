@@ -16,7 +16,7 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 
 import { formSchema } from './constants';
 
-const ConsersationPage = () => {
+const ConservationPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -50,7 +50,6 @@ const ConsersationPage = () => {
       router.refresh();
     }
   };
-
   return (
     <div>
       <Heading
@@ -104,4 +103,4 @@ const ConsersationPage = () => {
   );
 };
 
-export default ConsersationPage;
+export default ConservationPage;
