@@ -6,7 +6,8 @@ import { MessageSquare } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChatCompletionRequestMessage } from 'openai';
+import ChatCompletionMessage from 'openai';
+import OpenAI from 'openai';
 
 import { Heading } from '@/components/heading';
 import { Button } from '@/components/ui/button';
@@ -16,9 +17,9 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 
 import { formSchema } from './constants';
 
-const ConservationPage = () => {
+const ConversationPage = () => {
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -31,7 +32,7 @@ const ConservationPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const userMessage: ChatCompletionRequestMessage = {
+      const userMessage: OpenAI.Chat.ChatCompletionMessage = {
         role: 'user',
         content: values.prompt,
       };
@@ -91,16 +92,16 @@ const ConservationPage = () => {
             </form>
           </Form>
         </div>
-        <div className="space-y-4 mt-4">
+        {/* <div className="space-y-4 mt-4">
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
               <div key={message.content}>{message.content}</div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default ConservationPage;
+export default ConversationPage;
